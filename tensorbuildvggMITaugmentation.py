@@ -31,6 +31,7 @@ import tensorflow as tf
 K.set_image_dim_ordering('tf')
 
 # wts3 is the final w1w2
+
 # wts4 is the w1w2urml
 currentWeights="C:/GIST/tensorflow/modelsave/modelwtsall1246layersnotest.h5"
 trainingDataPath="C:/GIST/tensorflow/buildings/training_data"
