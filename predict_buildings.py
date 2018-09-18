@@ -12,7 +12,7 @@ sys.path.append(r"f:\onedrive\a11PyCharmCNN")
 import tensorflow as tf
 K.clear_session()
 
-# Forces the keras images fomat to have the number of channels last
+# use tensorflow band last order
 K.set_image_dim_ordering('tf')
 
 # Variable corresponding to the images size in pixels. 224 is the usual value
@@ -91,25 +91,14 @@ with tf.device('/gpu:0'):
 
                 path1 = images[index]
 
-                #path2 = images[index + 1]
 
                 # The year corresponds with the first 4 characters in the file name
 
                 year1 = path1.split('\\')[-1][:4]
 
-                #year2 = path2.split('\\')[-1][:4]
-
                 img1 = misc.imread(path1)[150:450,150:450]#[:610, :]
 
-                #img2 = misc.imread(path2)[:610, :]
-
                 img1 = misc.imresize(img1, (IMG_SIZE, IMG_SIZE))/255.0
-
-                #img2 = misc.imresize(img2, (IMG_SIZE, IMG_SIZE))/255.0
-
-                # img1 = preprocess_input(x=np.expand_dims(img1.astype(float), axis=0))[0]
-                #
-                # img2 = preprocess_input(x=np.expand_dims(img2.astype(float), axis=0))[0]
 
                 X.append(img1)
 
@@ -119,9 +108,6 @@ with tf.device('/gpu:0'):
 
         X = np.array(X)
 
-        # xx=misc.imread(r'F:\ottawa_image_db\45.351602,-75.710212\2016_5_Dn3kq9pMmmsqBM_q9enJlw.jpg')[150:450,150:450]
-        # xx=misc.imresize(xx, (IMG_SIZE, IMG_SIZE))
-        # Predicting the data class: if the confindence that there is a change is more than 50% (0.5)
 
         # We assume that ther is a change, and in other cases we assume there is not
 
